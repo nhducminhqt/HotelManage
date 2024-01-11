@@ -1,5 +1,6 @@
 hotelmanager\Utils.class
 hotelmanager\Hotel.class
+hotelmanager\HotelArrayList$1.class
 hotelmanager\HotelArrayList.class
 hotelmanager\Menu.class
 hotelmanager\HotelManager.class

@@ -10,7 +10,7 @@ import java.io.Serializable;
  *
  * @author LENOVO
  */
-public class Hotel implements Serializable {
+public class Hotel implements Serializable,Comparable<Hotel> {
     private String hotelID,hotelName;
     private int hotelRoomAvailable;
     private String hotelAddress,hotelPhone,hotelRating;
@@ -85,6 +85,12 @@ public class Hotel implements Serializable {
     @Override
     public String toString() {
         return "Hotel{" + "hotelID=" + hotelID + ", hotelName=" + hotelName + ", hotelRoomAvailable=" + hotelRoomAvailable + ", hotelAddress=" + hotelAddress + ", hotelPhone=" + hotelPhone + ", hotelRating=" + hotelRating + '}';
+    }
+
+    @Override
+    public int compareTo(Hotel o) {
+        int ans = this.getHotelID().compareTo(o.getHotelID());
+        return ans;
     }
     
    
