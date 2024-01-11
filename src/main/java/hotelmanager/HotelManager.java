@@ -57,8 +57,7 @@ public class HotelManager {
         } catch (Exception e) {
                 System.out.println(e);
         }
-        System.out.println("toi da thay doi");
-       
+        System.out.println("thay doi");       
         
         
     }
