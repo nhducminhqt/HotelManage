@@ -27,7 +27,7 @@ public class HotelManager {
             do {
                 switch (choise) {
                     case 1:
-                        hal.addNewHotel();
+                        haldata.addNewHotel();
                         choise = menu.getUserChoise();
                         break;
                     case 2:
@@ -51,6 +51,9 @@ public class HotelManager {
                         choise = menu.getUserChoise();
                         break;
                     case 7:
+                        for (Hotel hotel : haldata) {
+                            hal.add(hotel);
+                        }
                         hal.savetoFile("Hotel.dat");
                         choise = menu.getUserChoise();
                         break;
