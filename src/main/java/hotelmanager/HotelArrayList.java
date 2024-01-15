@@ -156,41 +156,50 @@ public class HotelArrayList extends ArrayList<Hotel> {
         if (check) {
             String hotelID = Utils.getString("Input ID: ", "ID can not be empty");
             boolean ans = false;
-            HotelArrayList hallist = new HotelArrayList();
             for (Hotel hol : this) {
                 if (hol.getHotelID().equals(hotelID)) {
-                    hallist.add(hol);
-                    ans = true;
-
-                }
-            }
-            if (ans) {
-                Collections.sort(hallist);
+                    
+                ans = true;
                 System.out.println("---------------------------------------------------------------------------------");
                 System.out.println("|Hotel_id|Hotel_name|Hotel_Room_Available|Hotel_Address|Hotel_Phone|Hotel_Rating|");
                 System.out.println("---------------------------------------------------------------------------------");
-                for (Hotel hol : hallist) {
-                    if (hol.getHotelID().equals(hotelID)) {
-                        System.out.printf("|%-8s|%-10s|%-20d|%-13s|%-11s|%-12s|\n", hol.getHotelID(), hol.getHotelName(), hol.getHotelRoomAvailable(), hol.getHotelAddress(), hol.getHotelPhone(), hol.getHotelRating());
-                    }
+                System.out.printf("|%-8s|%-10s|%-20d|%-13s|%-11s|%-12s|\n", hol.getHotelID(), hol.getHotelName(), hol.getHotelRoomAvailable(), hol.getHotelAddress(), hol.getHotelPhone(), hol.getHotelRating());
+                System.out.println("----------------------------------------------------------------------------------");    
+                break;
                 }
-                System.out.println("----------------------------------------------------------------------------------");
-            } else {
+            }
+            if (!ans)   {
                 System.out.println("The ID is not exist!!");
             }
         } else {
             String hotelName = Utils.getString("Input Name: ", "Name can not be empty");
             boolean ans = false;
+            
             for (Hotel hol : this) {
                 if (hol.getHotelName().equals(hotelName)) {
                     ans = true;
                     break;
                 }
-            }
             if (ans) {
                 System.out.println("---------------------------------------------------------------------------------");
                 System.out.println("|Hotel_id|Hotel_name|Hotel_Room_Available|Hotel_Address|Hotel_Phone|Hotel_Rating|");
                 System.out.println("---------------------------------------------------------------------------------");
+                HotelArrayList htarl = new HotelArrayList();
+                for (Hotel hol : this)  if (hol.getHotelName().equals(hotelName)) {
+                   htarl.add(hol);
+                    
+                }
+                 Collections.sort(htarl, new Comparator<Hotel>() {
+            @Override
+            public int compare(Hotel o1, Hotel o2) {
+                    int a ;
+                    if(o1.getHotelRoomAvailable() > o2.getHotelRoomAvailable()){a = 1;}
+                    else if (o1.getHotelRoomAvailable() < o2.getHotelRoomAvailable()){a = -1;}
+                    else a= 0;
+                return a;
+            }
+        });
+                
                 for (Hotel hol : this) {
                     if (hol.getHotelName().equals(hotelName)) {
                         System.out.printf("|%-8s|%-10s|%-20d|%-13s|%-11s|%-12s|\n", hol.getHotelID(), hol.getHotelName(), hol.getHotelRoomAvailable(), hol.getHotelAddress(), hol.getHotelPhone(), hol.getHotelRating());
