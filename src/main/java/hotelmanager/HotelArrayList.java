@@ -74,6 +74,7 @@ public class HotelArrayList extends ArrayList<Hotel> {
             String hotelRating = Utils.getString("Input the rating: ", "The rating can not be empty");
             Hotel hotel = new Hotel(hotelID, hotelName, hotelRoomAvailable, hotelAddress, hotelPhone, hotelRating);
             this.add(hotel);
+            System.out.println("Updated successfully!!");
             check = Utils.getChoiseYN("Do you want to add more hotel? ( 1 for yes / 0 for no )");
         } while (check);
 
@@ -106,12 +107,11 @@ public class HotelArrayList extends ArrayList<Hotel> {
     ; 
    public void updateHotelInfo() {
         Scanner sc = new Scanner(System.in);
-        boolean ans = false;
+        boolean ans1 = false;        boolean ans2 = false;
         String hotelID = Utils.getString("Input ID: ", "ID can not be empty");
         for (Hotel hol : this) {
             if (hol.getHotelID().equals(hotelID)) {
-                ans = true;
-                
+                ans1= true;
                 System.out.print("Input new ID: ");
                 String hotelid = sc.nextLine();
                 System.out.print("Input new name of Hotel: ");
@@ -123,27 +123,30 @@ public class HotelArrayList extends ArrayList<Hotel> {
                 String hotelPhone = sc.nextLine();
                 System.out.print("Input new rating: ");
                 String hotelRating = sc.nextLine();
-                if ((hotelid.equals("")) ||(!checkValidID(hotelid))|| (hotelName.equals("")) || (hotelAddress.equals("")) || (hotelPhone.equals("")) || (hotelRating.equals(""))) {
-                    System.out.println("Failure update");
-                } else {
+                if (!(hotelid.equals("")) &&(checkValidID(hotelid))&& !(hotelName.equals("")) &&!(hotelAddress.equals("")) && !(hotelPhone.equals("")) && !(hotelRating.equals(""))) {
+                     ans2= true;
                     hol.setHotelID(hotelid);
                     hol.setHotelName(hotelName);
                     hol.setHotelRoomAvailable(hotelRoomAvailable);
                     hol.setHotelAddress(hotelAddress);
                     hol.setHotelPhone(hotelPhone);
                     hol.setHotelRating(hotelRating);
-                    System.out.println("Success update");
+                    
                 }
+                
                 break;
-            }
-            if (ans) {
-                System.out.println("Successful update");
-            } else {
+            }}
+            if (ans1&&ans2) {
+                System.out.println("Successful update!!");
+            } else 
+                if(!ans1)
+            {
                 System.out.println("Hotel does not exist");
             }
+                else if((ans1)&&(!ans2)){System.out.println("Failure update!!");}
 
         }
-    }
+    
 
     ;
    public void deleteHotel() {
@@ -259,11 +262,6 @@ public class HotelArrayList extends ArrayList<Hotel> {
     }
 
     public void savetoFile(String filename) {
-        if (this.isEmpty()) {
-            System.out.println("Empty List");
-            return;
-
-        }
         try {
             FileOutputStream f = new FileOutputStream(filename);
             ObjectOutputStream fo = new ObjectOutputStream(f);
@@ -276,7 +274,7 @@ public class HotelArrayList extends ArrayList<Hotel> {
         } catch (Exception e) {
             System.out.println(e);
         }
-
+        System.out.println("Save successfully!!");
     }
 
 }

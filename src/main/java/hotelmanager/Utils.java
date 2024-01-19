@@ -103,10 +103,10 @@ public class Utils {
                  System.out.println(welcome );
                  number = Integer.parseInt(sc.nextLine());
                  if (number !=0 && number != 1) {
-                     System.out.println("Input 1 or 2 ");}
+                     System.out.println("Input 1 or 0 ");}
                  else {check = false;}
              } catch (Exception e) {
-                 System.out.println("Input 1 or 2 ");
+                 System.out.println("Input 1 or 0 ");
              }
          } while (check || (number!=0 && number!=1));
          if (number == 0) check = false ;

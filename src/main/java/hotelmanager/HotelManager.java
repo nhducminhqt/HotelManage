@@ -11,7 +11,6 @@ public class HotelManager {
 
     public static void main(String[] args) {
         HotelArrayList hal = new HotelArrayList();
-        HotelArrayList haldata = new HotelArrayList();
         hal.loadFromFile("Hotel.dat");
         Menu menu = new Menu();
         menu.add("1.Add new hotel");
@@ -27,7 +26,7 @@ public class HotelManager {
             do {
                 switch (choise) {
                     case 1:
-                        haldata.addNewHotel();
+                        hal.addNewHotel();
                         choise = menu.getUserChoise();
                         break;
                     case 2:
@@ -51,9 +50,6 @@ public class HotelManager {
                         choise = menu.getUserChoise();
                         break;
                     case 7:
-                        for (Hotel hotel : haldata) {
-                            hal.add(hotel);
-                        }
                         hal.savetoFile("Hotel.dat");
                         choise = menu.getUserChoise();
                         break;
